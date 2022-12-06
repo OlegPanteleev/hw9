@@ -2,6 +2,7 @@ package hw9;
 
 public class Class1 {
 
+
     /*
 
     1. Напишите метод, на вход которого подаётся двумерный строковый массив размером 4х4. При
@@ -15,27 +16,133 @@ public class Class1 {
      */
     public static void main(String[] args) {
 
-        String[][] array = new String[4][4];
 
-        myArray(array);
 
     }
 
-    public static void myArray(String[][] arr){
 
+}
+
+class ArrayCheck{
+
+    private String[][] array;
+
+    public String[][] getArray() {
+        return array;
     }
 
+    public void setArray(String[][] array) {
+        this.array = array;
+    }
+
+    public ArrayCheck(String[][] array) {
+        this.array = array;
+    }
 }
 
-abstract class myArrayException extends Exception{
 
+abstract class MyArrayException extends Exception{
 
+    private int x;
+    private int y;
+
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public MyArrayException(String message, int x, int y) {
+        super(message);
+        this.x = x;
+        this.y = y;
+    }
 }
 
-class myArraySizeException extends myArrayException{
+class MyArraySizeException extends MyArrayException{
 
+
+    public MyArraySizeException(String message, int x, int y) {
+        super(message, x, y);
+    }
 }
 
-class myArrayDataException extends myArrayException{
+class MyArrayDataException extends MyArrayException{
 
+
+    public MyArrayDataException(String message, int x, int y) {
+        super(message, x, y);
+    }
 }
+
+/*class Check extends ArrayCheck{
+
+    public static String counter;
+
+    @Override
+    int size(String[][] array) throws myArraySizeException {
+        for (int i = 0; i < array.length; i++){
+            for (int j = 0; j < array[i].length; j++){
+                if (array.length != 4 && array[i].length != 4){
+                    throw new myArraySizeException("Некорректный размер массива", array);
+                }
+                else if (array.length == 4 && array[i].length == 4){
+                    counter += array[i][j];
+                }
+            }
+    }
+
+    @Override
+    int data(String[][] array) throws myArrayDataException {
+        for (int i = 0; i < array.length; i++){
+            for (int j = 0; j < array[i].length; j++){
+                if (Integer.parseInt(array[i][j])){
+
+                }
+            }
+        }
+    }
+}
+
+ */
+
+/*class ArrayCheck th{
+
+
+    int size (String[][] array) throws{
+        for (int i = 0; i < array.length; i++){
+            for (int j = 0; j < array[i].length; j++){
+                if (array.length != 4 && array[i].length != 4){
+                    throw new myArraySizeException("Некорректный размер массива", array);
+                }
+                else if (array.length == 4 && array[i].length == 4){
+                    return array;
+                }
+
+    }
+}
+    int data (String[][] array) throws myArrayDataException;
+}
+
+    /*abstract boolean size (String[][] array) throws myArraySizeException{
+        int counter = 0;
+        for (int i = 0; i < array.length; i++ ) {
+            for (int j = 0; j < array[i].length; j++) {
+                if (array.length != 4) {
+                    throw new myArraySizeException("Некорректная длинна массива", array);
+                }
+                return true;
+            }
+        }
+
+     */
